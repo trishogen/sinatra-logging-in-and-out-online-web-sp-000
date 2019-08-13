@@ -24,7 +24,7 @@ class ApplicationController < Sinatra::Base
       @balance = Helpers.current_user.balance
       erb :account
     else
-
+      erb :error
     end
 
   end
