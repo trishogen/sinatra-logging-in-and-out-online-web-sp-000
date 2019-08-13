@@ -11,8 +11,10 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/login' do
-    session[:user_id] = @user.id
-    redirect to "/account"
+    if @user
+      session[:user_id] = @user.id
+      redirect to "/account"
+    end
   end
 
   get '/account' do
