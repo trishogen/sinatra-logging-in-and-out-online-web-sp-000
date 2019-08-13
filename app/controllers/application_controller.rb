@@ -15,18 +15,15 @@ class ApplicationController < Sinatra::Base
     if @user
       session[:user_id] = @user.id
       redirect to "/account"
+    else
+      redirect to "/error"
     end
   end
 
   get '/account' do
-    if Helpers.is_logged_in? == True
-      @user = Helpers.current_user.username
-      @balance = Helpers.current_user.balance
-      erb :account
-    else
-      erb :error
-    end
-
+    @user = Helpers.current_user.username
+    @balance = Helpers.current_user.balance
+    erb :account
   end
 
   get '/logout' do
